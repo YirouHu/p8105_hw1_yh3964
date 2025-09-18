@@ -1,1 +1,2 @@
 # p8105_hw1_yh3964
+This repository contains my solutions for P8105 Homework 1. In Problem 1, I describe and analyze the early_january_weather dataset by summarizing its variables, calculating descriptive statistics such as the mean temperature, and creating a scatterplot of temperature over time colored by humidity to illustrate daily patterns and overall trends. In Problem 2, I construct a tibble with numeric, logical, character, and factor variables, explore which types allow meaningful calculation of means, and use as.numeric to investigate how R handles type coercion.
