@@ -15,3 +15,36 @@ library(tidyverse)
 ```{r}
 data("early_january_weather")
 ```
+## Description of the dataset
+ 
+This dataset is a weather-related dataset which contains the information about the hourly  `r nrow(early_january_weather)` observations about the first fifteen days of January. Given that 15 days have 360 hours, two observations seem to be missing in this dataset. Additionally, this dataset's mean temperature is `r round(mean(pull(early_january_weather, temp)))` F. The dataset has `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns, and the detailed information is as follows:
+
+origin: The origin variable, which indicates the source from which the weather data comes, is of the `r typeof(early_january_weather$origin)` type.
+
+year: Year variable represents the year of the data.In this dataset, they are from the 2013.
+
+month: Month variable denotes the month of the year, which is January in this dataset.
+
+day: Day variable represents the day of January, it has a range of `r range(early_january_weather$day)`.
+
+hour: Hour variable represents the time within each day, whose range is `r range(early_january_weather$hour)`.
+
+temp: This variable represents the temperature with degrees Fahrenheit, ranging from `r min(early_january_weather$temp)` to `r max(early_january_weather$temp)`.
+
+dewp: This variable is the dew point temperature degrees with degrees in Fahrenheit, ranging from `r min(early_january_weather$dewp)` to `r max(early_january_weather$dewp)`.
+
+humid: This variable represents the humidity level, with a range of `r min(early_january_weather$humid)` to `r max(early_january_weather$humid)`.
+
+wind_dir: This variable represents wind direction. It has missing value in this dataset. Moreover, it ranges from `r min(early_january_weather$wind_dir,na.rm=T)` to `r max(early_january_weather$wind_dir,na.rm=T)`.
+
+wind_speed: This variable represents the speed of wind with a range of `r min(early_january_weather$wind_speed)` to `r max(early_january_weather$wind_speed)`.
+
+wind_gust: This variable has missing value in this dataset. It has a range from `r min(early_january_weather$wind_gust,na.rm=T)` to `r max(early_january_weather$wind_gust,na.rm=T)`.
+
+precip: This variable has a range from `r min(early_january_weather$precip)` to `r max(early_january_weather$precip)` with the meaning of hourly precipitation.
+
+pressure: Pressure variable measures atmospheric pressure with a range from `r min(early_january_weather$pressure,na.rm=T)` to `r max(early_january_weather$pressure,na.rm=T)`. There are missing values in this variable.
+
+visib: This variable indicates visibility in miles degree.
+
+time_hour: This variable indicates the time and date of each observation.
