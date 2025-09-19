@@ -89,3 +89,18 @@ mean(pull(df_problem2, factor_vector))
 
 As shown in the answer above, the mean can be calculated for `random_sample` and `logical_vector`, but not for `character_vector` and `factor_vector`. This is because `random_sample` is a numerical variable, and `logical_vector` contains 0 and 1 (with 1 representing TRUE and 0 representing FALSE). Hence, R computes `logical_vector` as the mean of the combination of 0 and 1.  In contrast, `character_vector` and `factor_vector` return NA when their mean is calculated, as they are neither logical nor numerical variables. Thus, only the mean of `random_sample` and `logical_vector` can be computed.
 
+## Convert variables
+
+We use `as.numeric` to convert the type of each variables. We want to show the code without output by choosing `results="hide"`, `warning=FALSE`, and `message=FALSE`.
+
+```{r results = 'hide', warning = FALSE, message = FALSE}
+as.numeric(pull(df_problem2, random_sample))
+as.numeric(pull(df_problem2, logical_vector))
+as.numeric(pull(df_problem2, character_vector))
+as.numeric(pull(df_problem2, factor_vector))
+```
+
+By applying `as.numeric` to each variable, we can find that `logical_vector` is converted successfully with 0 for False and 1 for True. When I convert a character variable, it shows `NA`. This shows that we can not convert a character variable. Moreover, we find that the factor variable `factor_vector` is converted successfully. R converts the levels of the factor to a numeric representation. In this case, 
+factor variables take the value of `1` for `Level 1`, `2` for `Level 2` and `3` for `Level 3`.
+
+Converting variables using `as.numeric` can help explain what happens when I try to calculate the mean. R only successfully computes the mean for numeric or logical variables. For character and factor variables, `mean()` fails to give an answer unless the user explicitly converts them with a clear numeric interpretation. Transforming these variables into numeric form allows them to be used in calculations, but it is important to confirm that the resulting values have a meaningful interpretation for computing the mean.
