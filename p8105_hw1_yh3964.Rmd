@@ -15,6 +15,7 @@ library(tidyverse)
 ```{r}
 data("early_january_weather")
 ```
+
 ## Description of the dataset
  
 This dataset is a weather-related dataset which contains the information about the hourly  `r nrow(early_january_weather)` observations about the first fifteen days of January. Given that 15 days have 360 hours, two observations seem to be missing in this dataset. Additionally, this dataset's mean temperature is `r round(mean(pull(early_january_weather, temp)))` F. The dataset has `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns, and the detailed information is as follows:
@@ -48,3 +49,14 @@ pressure: Pressure variable measures atmospheric pressure with a range from `r m
 visib: This variable indicates visibility in miles degree.
 
 time_hour: This variable indicates the time and date of each observation.
+
+## Next, we have a scatterplot of temperature regarding time with humidity color. 
+
+```{r}
+ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) + 
+  geom_point()+ labs(x = "Time_Hour", y = "Temperature")
+
+ggsave("p8105_hw1_yh3964_scatterplot.pdf")
+```
+
+From the scatterplot of temperature vs time, we can see clear temperature patterns throughout the day: Temperatures showed an overall upward trend for the first half of January. Notably, the fluctuations of the begin, middle and the end of 15 days are relatively big. From January 11th to January 14th, humidity levels were increased compared to January 3rd. In addition, we can observe that ass morning comes and the sun rises, temperatures go up with a peak around noon, indicating the hottest time of the day. After that, they slowly drop as the day goes on. 
