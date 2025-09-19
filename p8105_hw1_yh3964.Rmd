@@ -64,6 +64,7 @@ From the scatterplot of temperature vs time, we can see clear temperature patter
 # Problem 2
 
 In this problem, we will create a new dataframe and investigate on the variables.
+
 ## Create a data frame
 
 ```{r}
@@ -76,3 +77,15 @@ df_problem2 =
     factor_vector = factor(c("Level 1", "Level 1", "Level 1", "Level 2", "Level 2", "Level 2", "Level 2", "Level 3", "Level 3", "Level 3"))
   )
 ```
+
+## Calculate the mean of each variable in the dataframe
+
+```{r}
+mean(pull(df_problem2, random_sample))
+mean(pull(df_problem2, logical_vector))
+mean(pull(df_problem2, character_vector))
+mean(pull(df_problem2, factor_vector))
+```
+
+As shown in the answer above, the mean can be calculated for `random_sample` and `logical_vector`, but not for `character_vector` and `factor_vector`. This is because `random_sample` is a numerical variable, and `logical_vector` contains 0 and 1 (with 1 representing TRUE and 0 representing FALSE). Hence, R computes `logical_vector` as the mean of the combination of 0 and 1.  In contrast, `character_vector` and `factor_vector` return NA when their mean is calculated, as they are neither logical nor numerical variables. Thus, only the mean of `random_sample` and `logical_vector` can be computed.
+
